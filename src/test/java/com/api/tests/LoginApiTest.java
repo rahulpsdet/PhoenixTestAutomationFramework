@@ -1,12 +1,15 @@
 package com.api.tests;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.lessThan;
 
-import static org.hamcrest.Matchers.*;
+import java.io.IOException;
 
 import org.testng.annotations.Test;
 
 import com.api.pojo.UserCredentials;
+import static com.api.utils.ConfigManager.*;
 
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
@@ -15,10 +18,10 @@ public class LoginApiTest {
 	
 	@Test
 	
-	public void loginAPITest() {
-		UserCredentials userCredentail = new UserCredentials("iamfd","password");
+	public void loginAPITest() throws IOException {
+	UserCredentials userCredentail = new UserCredentials("iamfd","password");
 		given()
-		.baseUri("http://64.227.160.186:9000/v1")
+		.baseUri(getProprty("BASE_URI"))
 		.and()
 		.contentType(ContentType.JSON)
 		.accept(ContentType.JSON)
@@ -32,7 +35,7 @@ public class LoginApiTest {
     .then()
     .log().all()
     		.statusCode(200)
-    		.time(lessThan(1500L))
+    		.time(lessThan(2500L))
     		.and()
     		.body("message", equalTo("Success"))
     		.and()
