@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
    inputs:
      env:
-      description: " Environment"
+      description: "Environment"
       type: choice
       options: [qa,uat,dev]
       default: qa
