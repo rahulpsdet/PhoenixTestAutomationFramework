@@ -38,4 +38,4 @@ jobs:
       with:
         name: SureFire Report
         path: target/surefire-reports/
-        retention-days: 11
+        retention-days: 10
