@@ -7,6 +7,8 @@ import static org.hamcrest.Matchers.lessThan;
 
 import org.testng.annotations.Test;
 
+import com.api.utils.SpecUtil;
+
 import static com.api.constant.Role.*;
 
 import io.restassured.http.ContentType;
@@ -17,22 +19,13 @@ public class UserDetailsAPITest {
 	
 	@Test
  public void UserDetailsAPITest() {
-	 Header authHeader = new Header("Authorization", getToken(ENG));
+		
 given()
-	  .baseUri(getProprty("BASE_URI"))
-	 .and()
-	 .header(authHeader)
-	 .accept(ContentType.JSON)
-	 .log().uri()
-	 .log().headers()
-	 .log().body()
+	 .spec(SpecUtil.requestSpecWithAuth(FD))
 .when()
 		.get("userdetails")
 .then()
-.log().all()
-		.statusCode(200)
-		.and()
-		.time(lessThan(2500L))
+.spec(SpecUtil.responseSpec_OK())
 		.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("response-schema/UserDetailsResponseSchema.json"));
 	 
  }
