@@ -1,32 +1,26 @@
 package com.api.tests;
 
-import static com.api.utils.AuthTokenProvider.getToken;
-import static com.api.utils.ConfigManager.getProprty;
+import static com.api.constant.Role.FD;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.lessThan;
 
 import org.testng.annotations.Test;
 
-import com.api.utils.SpecUtil;
+import static com.api.utils.SpecUtil.*;
 
-import static com.api.constant.Role.*;
-
-import io.restassured.http.ContentType;
-import io.restassured.http.Header;
-import io.restassured.module.jsv.JsonSchemaValidator;
+import static io.restassured.module.jsv.JsonSchemaValidator.*;
 
 public class UserDetailsAPITest {
 	
-	@Test
- public void UserDetailsAPITest() {
+	@Test(description="Verify of the userdetails API is shown correctly", groups= {"smoke","api","regression"})
+ public void userDetailsAPITest() {
 		
 given()
-	 .spec(SpecUtil.requestSpecWithAuth(FD))
+	 .spec(requestSpecWithAuth(FD))
 .when()
 		.get("userdetails")
 .then()
-.spec(SpecUtil.responseSpec_OK())
-		.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("response-schema/UserDetailsResponseSchema.json"));
+.spec(responseSpec_OK())
+		.body(matchesJsonSchemaInClasspath("response-schema/UserDetailsResponseSchema.json"));
 	 
  }
 
