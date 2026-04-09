@@ -2,34 +2,37 @@ package com.api.tests;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.lessThan;
 
 import java.io.IOException;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.api.pojo.UserCredentials;
-import com.api.utils.SpecUtil;
+import com.api.request.model.UserCredentials;
+import static com.api.utils.SpecUtil.*;
 
-import static com.api.utils.ConfigManager.*;
-
-import io.restassured.http.ContentType;
-import io.restassured.module.jsv.JsonSchemaValidator;
+import static io.restassured.module.jsv.JsonSchemaValidator.*;
 
 public class LoginApiTest {
+	private UserCredentials userCredentail;
+	
+	@BeforeMethod(description="Create the Payload for the login API test")
+	public void setup() {
+		 userCredentail = new UserCredentials("iamfd", "password");
+	}
 
-	@Test
+	@Test(description = "Verify if login API is working for FD useer", groups= {"api","regression","smoke"})
 
 	public void loginAPITest() throws IOException {
-		UserCredentials userCredentail = new UserCredentials("iamfd", "password");
+		
 		given()
-		.spec(SpecUtil.requestSpec(userCredentail))
+		.spec(requestSpec(userCredentail))
 		.when()
 		.post("login")
 		.then()
-		.spec(SpecUtil.responseSpec_OK())
+		.spec(responseSpec_OK())
 				.body("message", equalTo("Success")).and()
-				.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("response-schema/LoginResponseSchema.json"));
+				.body(matchesJsonSchemaInClasspath("response-schema/LoginResponseSchema.json"));
 
 	}
 
