@@ -2,7 +2,7 @@ name: Phoenix Test Automation Framework Workflow
 
 on:
   push:
-    branches: [ "master"]
+    branches: [ "master", "feature/*" ]
   pull_request:
     branches: [ "master" ]
   schedule:
@@ -22,8 +22,6 @@ on:
       options: [testng.xml,smoke.xml,regression.xml]
       default: testng.xml
       required: true
-
-
 jobs:
   test:
 
@@ -42,7 +40,7 @@ jobs:
       id: default
       run: |
             echo "suiteXmlFile=${{ github.event.inputs.suiteXmlFile || 'testng.xml'}}" >> $GITHUB_OUTPUT
-            echo "env=${{ github.event.inputs.env || 'qa'}}" >> $GITHUB_OUTPUT
+            echo "env=${{ github.event.inputs.env || 'qa' }}" >> $GITHUB_OUTPUT
             
     - name: Execute Test Automation Framework  
       run: mvn clean test -DsuiteXmlFile="${{ steps.default.outputs.suiteXmlFile }}"  -Denv="${{ steps.default.outputs.env }}" 
