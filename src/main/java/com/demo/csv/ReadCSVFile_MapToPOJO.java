@@ -13,18 +13,15 @@ import com.opencsv.exceptions.CsvException;
 public class ReadCSVFile_MapToPOJO {
 
 	public static void main(String[] args) throws IOException, CsvException {
-		// TODO Auto-generated method stub
 
 		InputStream inputStream = Thread.currentThread().getContextClassLoader()
 				.getResourceAsStream("testData/LoginCreds.csv");
 		InputStreamReader isr = new InputStreamReader(inputStream);
 		CSVReader csvReader = new CSVReader(isr);
-		
-		CsvToBean<UserPOJO> csvBean = new CsvToBeanBuilder(csvReader)
-				.withType(UserPOJO.class)
-				.withIgnoreEmptyLine(true)
+
+		CsvToBean<UserBean> csvBean = new CsvToBeanBuilder(csvReader).withType(UserBean.class).withIgnoreEmptyLine(true)
 				.build();
-		List<UserPOJO> dataList = csvBean.parse();
+		List<UserBean> dataList = csvBean.parse();
 		System.out.println(dataList);
 	}
 
