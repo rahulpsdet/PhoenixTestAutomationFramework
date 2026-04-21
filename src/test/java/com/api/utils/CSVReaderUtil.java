@@ -15,15 +15,15 @@ public class CSVReaderUtil {
 	private CSVReaderUtil() {
 	}
 
-	public static Iterator<UserBean> loadCSV(String pathOfCSVFile) {
+	public static  <T> Iterator<T> loadCSV(String pathOfCSVFile, Class<T> bean) {
 
 		InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(pathOfCSVFile);
 		InputStreamReader isr = new InputStreamReader(inputStream);
 		CSVReader csvReader = new CSVReader(isr);
 
-		CsvToBean<UserBean> csvBean = new CsvToBeanBuilder(csvReader).withType(UserBean.class).withIgnoreEmptyLine(true)
+		CsvToBean<T> csvToBean = new CsvToBeanBuilder(csvReader).withType(bean).withIgnoreEmptyLine(true)
 				.build();
-		List<UserBean> dataList = csvBean.parse();
-		return dataList.iterator();	}
+		List<T> list = csvToBean.parse();
+		return list.iterator();	}
 
 }
