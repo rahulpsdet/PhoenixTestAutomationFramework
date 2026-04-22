@@ -11,11 +11,11 @@ import org.testng.annotations.Test;
 import com.api.constant.Role;
 import com.api.request.model.CreateJobPayload;
 
-public class CreateJobAPIDataDrivenTest {
+public class CreateJobAPIFakeDataDrivenTest {
 		
-	@Test(description="Verify if the crrate job API is able to create the Inwarranty job", groups= {"datadriven","api","regression","csv"}
+	@Test(description="Verify if the crrate job API is able to create the Inwarranty job", groups= {"datadriven","api","regression","faker"}
 	,dataProviderClass=com.dataproviders.DataProviderUtils.class
-			,dataProvider="CreateJobAPIDataProvider")
+			,dataProvider="CreateJobAPIFakeDataProvider")
 	public void createJobAPITest(CreateJobPayload createJobPayload) {
 		// Creating the CreateJobPayload object
 		

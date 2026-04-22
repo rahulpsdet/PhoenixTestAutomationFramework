@@ -1,4 +1,4 @@
-package com.api.tests.datadriven;
+package com.api.tests;
 
 import static com.api.utils.SpecUtil.requestSpecWithAuth;
 import static com.api.utils.SpecUtil.responseSpec_OK;
@@ -6,17 +6,24 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 import org.hamcrest.Matchers;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.api.constant.Role;
 import com.api.request.model.CreateJobPayload;
+import com.api.utils.FakerDataGenerator;
 
-public class CreateJobAPIDataDrivenTest {
-		
-	@Test(description="Verify if the crrate job API is able to create the Inwarranty job", groups= {"datadriven","api","regression","csv"}
-	,dataProviderClass=com.dataproviders.DataProviderUtils.class
-			,dataProvider="CreateJobAPIDataProvider")
-	public void createJobAPITest(CreateJobPayload createJobPayload) {
+public class CreateJobAPITestWithFakeData {
+	CreateJobPayload createJobPayload;
+	private final static String COUNTRY="India";
+	
+	@BeforeMethod(description="Creating payload for crerate job API test")
+	public void setup()
+	{
+		createJobPayload=FakerDataGenerator.generateFakeCreateJobData();
+	}	
+	@Test(description="Verify if the crrate job API is able to create the Inwarranty job", groups= {"smoke","api","regression"})
+	public void createJobAPITest() {
 		// Creating the CreateJobPayload object
 		
 		
