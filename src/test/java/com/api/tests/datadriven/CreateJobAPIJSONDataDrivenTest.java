@@ -18,8 +18,6 @@ public class CreateJobAPIJSONDataDrivenTest {
 			,dataProvider="CreateJobAPIJSONDataProvider")
 	public void createJobAPITest(CreateJobPayload createJobPayload) {
 		// Creating the CreateJobPayload object
-		
-		
 		 given()
 		 .spec(requestSpecWithAuth(Role.FD, createJobPayload))
 		 .when()
