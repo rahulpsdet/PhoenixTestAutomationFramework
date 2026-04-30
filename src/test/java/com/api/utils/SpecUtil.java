@@ -1,6 +1,6 @@
 package com.api.utils;
 
-import static com.api.utils.ConfigManager.getProprty;
+import static com.api.utils.ConfigManager.getProperty;
 
 import org.hamcrest.Matchers;
 
@@ -20,7 +20,7 @@ public class SpecUtil {
 		// To take care of the common request sections (methods)
 		
  RequestSpecification request = new RequestSpecBuilder()
- .setBaseUri(getProprty("BASE_URI"))
+ .setBaseUri(getProperty("BASE_URI"))
  .setContentType(ContentType.JSON)
  .setAccept(ContentType.JSON)
  .log(LogDetail.URI)
@@ -35,7 +35,7 @@ public class SpecUtil {
 			// To take care of the common request sections (methods)
 			
 	 RequestSpecification requestSpecification = new RequestSpecBuilder()
-	 .setBaseUri(getProprty("BASE_URI"))
+	 .setBaseUri(getProperty("BASE_URI"))
 	 .setContentType(ContentType.JSON)
 	 .setAccept(ContentType.JSON)
 	 .setBody(payload)
@@ -63,7 +63,7 @@ public class SpecUtil {
 			// To take care of the common request sections (methods)
 			
 	 RequestSpecification requestSpecification = new RequestSpecBuilder()
-	 .setBaseUri(getProprty("BASE_URI"))
+	 .setBaseUri(getProperty("BASE_URI"))
 	 .setContentType(ContentType.JSON)
 	 .setAccept(ContentType.JSON)
 	 .addHeader("Authorization", AuthTokenProvider.getToken(role))
@@ -78,7 +78,7 @@ public class SpecUtil {
 			// To take care of the common request sections (methods)
 			
 	 RequestSpecification requestSpecification = new RequestSpecBuilder()
-	 .setBaseUri(getProprty("BASE_URI"))
+	 .setBaseUri(getProperty("BASE_URI"))
 	 .setContentType(ContentType.JSON)
 	 .setAccept(ContentType.JSON)
 	 .setBody(payload)
