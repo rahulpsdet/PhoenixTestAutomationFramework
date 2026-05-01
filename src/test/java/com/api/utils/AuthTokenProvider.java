@@ -31,7 +31,7 @@ public class AuthTokenProvider {
 	 userCredentials= new UserCredentials("iamqc", "password");
  }
 		// TODO Auto-generated method stub
-		String token = given().baseUri(ConfigManager.getProprty("BASE_URI")).contentType(ContentType.JSON)
+		String token = given().baseUri(ConfigManager.getProperty("BASE_URI")).contentType(ContentType.JSON)
 				.body(userCredentials).when().post("login").then().log().ifValidationFails()
 				.statusCode(200).body("message", equalTo("Success")).extract().body().jsonPath()
 				.getString("data.token");

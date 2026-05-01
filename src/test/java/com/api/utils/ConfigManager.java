@@ -8,14 +8,14 @@ import java.util.Properties;
 public class ConfigManager {
 	private static Properties prop = new Properties();
 	private static String path = "config/config.properties";
-	String env;
+	public static String env;
 
 	private ConfigManager() {
 
 	}
 
 	static {
-		String env = System.getProperty("env", "qa");
+		env = System.getProperty("env", "qa");
 		env = env.toLowerCase().trim();
 		System.out.println("Environemnt is Running on the Env: " + env);
 		switch (env) {
@@ -27,7 +27,7 @@ public class ConfigManager {
 
 // Operation of loading the properties file in the memory!
 		InputStream input = Thread.currentThread().getContextClassLoader()
-				.getResourceAsStream("config/config.properties");
+				.getResourceAsStream(path);
 		if (input == null) {
 			throw new RuntimeException("Can not find the file at the path " + path);
 		}
@@ -44,7 +44,7 @@ public class ConfigManager {
 		}
 	}
 
-	public static String getProprty(String key) {
+	public static String getProperty(String key) {
 		return (prop.getProperty(key));
 	}
 
