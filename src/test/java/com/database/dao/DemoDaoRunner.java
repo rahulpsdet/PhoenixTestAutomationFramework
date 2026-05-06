@@ -1,17 +1,27 @@
 package com.database.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 
-import com.database.model.CustomerDBModel;
+import com.api.request.model.CreateJobPayload;
+import com.api.utils.CreateJobBeanMapper;
+import com.dataproviders.api.bean.CreateJobBean;
 
 public class DemoDaoRunner {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-
-		CustomerDBModel customerDBData=CustomerDao.getCustomerInfo(272436);
-					System.out.println(customerDBData);
-
+		List<CreateJobBean> beanList = CreateJobPayloadDataDao.getCreateJobPayLoadData();
+		List<CreateJobPayload> payloadList = new ArrayList<CreateJobPayload>();
+		for (CreateJobBean createJobBean : beanList) {
+			CreateJobPayload payload = CreateJobBeanMapper.mapper(createJobBean);
+			payloadList.add(payload);
+		}
+		System.out.println("---------------------------------------");
+		for(  CreateJobPayload payload:payloadList) {
+			System.out.println(payload);
+		}
 	}
 
 }
