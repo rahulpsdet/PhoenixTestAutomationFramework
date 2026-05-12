@@ -119,3 +119,75 @@
 132-05-2026 22:22:36 [main] [32m INFO[m Utils::info():112 - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@36e409e0: 16 ms
 132-05-2026 22:22:37 [main] [32m INFO[m Utils::info():112 - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@25cde5bb: 8 ms
 132-05-2026 22:22:37 [main] [32m INFO[m Utils::info():112 - [TestNG] Time taken by org.testng.internal.ExitCodeListener@38a96593: 0 ms
+132-05-2026 22:45:02 [main] [32m INFO[m Utils::info():112 - [TestNG] Running:
+  C:\Users\HP\eclipse-workspace\PhoenixTestAutomationFramework\testng.xml
+
+132-05-2026 22:45:19 [main] [32m INFO[m AuthService::login():21 - Making Login Request for the payload
+132-05-2026 23:27:50 [main] [32m INFO[m Utils::info():112 - [TestNG] Running:
+  C:\Users\HP\eclipse-workspace\PhoenixTestAutomationFramework\testng.xml
+
+132-05-2026 23:27:63 [main] [32m INFO[m AuthService::login():21 - Making Login Request for the payload
+132-05-2026 23:33:31 [main] [32m INFO[m Utils::info():112 - [TestNG] Running:
+  C:\Users\HP\eclipse-workspace\PhoenixTestAutomationFramework\testng.xml
+
+132-05-2026 23:33:42 [main] [32m INFO[m APITestListener::onTestStart():15 - ****************************************************************
+132-05-2026 23:33:42 [main] [32m INFO[m APITestListener::onTestStart():16 - ========== Starting the test loginAPITest ========
+132-05-2026 23:33:42 [main] [32m INFO[m APITestListener::onTestStart():17 - ========== Test Class [TestClass name=class com.api.tests.LoginApiTest] ========
+132-05-2026 23:33:42 [main] [32m INFO[m APITestListener::onTestStart():18 - ========== Description Verify if login API is working for FD useer ========
+132-05-2026 23:33:42 [main] [32m INFO[m APITestListener::onTestStart():19 - ========== Groups [regression, smoke, api] ========
+132-05-2026 23:33:42 [main] [32m INFO[m APITestListener::onTestStart():20 - ****************************************************************
+132-05-2026 23:33:44 [main] [32m INFO[m AuthService::login():21 - Making Login Request for the payload
+132-05-2026 23:33:02 [main] [32m INFO[m APITestListener::onTestSuccess():28 - Total Duration:4602 ms 
+132-05-2026 23:33:03 [main] [32m INFO[m APITestListener::onTestSuccess():29 - loginAPITest- Test Passed!!!
+132-05-2026 23:33:06 [main] [32m INFO[m APITestListener::onTestStart():15 - ****************************************************************
+132-05-2026 23:33:06 [main] [32m INFO[m APITestListener::onTestStart():16 - ========== Starting the test userDetailsAPITest ========
+132-05-2026 23:33:06 [main] [32m INFO[m APITestListener::onTestStart():17 - ========== Test Class [TestClass name=class com.api.tests.UserDetailsAPITest] ========
+132-05-2026 23:33:06 [main] [32m INFO[m APITestListener::onTestStart():18 - ========== Description Verify of the userdetails API is shown correctly ========
+132-05-2026 23:33:06 [main] [32m INFO[m APITestListener::onTestStart():19 - ========== Groups [regression, smoke, api] ========
+132-05-2026 23:33:06 [main] [32m INFO[m APITestListener::onTestStart():20 - ****************************************************************
+132-05-2026 23:33:59 [main] [32m INFO[m APITestListener::onTestSuccess():28 - Total Duration:520 ms 
+132-05-2026 23:33:59 [main] [32m INFO[m APITestListener::onTestSuccess():29 - userDetailsAPITest- Test Passed!!!
+132-05-2026 23:33:59 [main] [32m INFO[m APITestListener::onTestStart():15 - ****************************************************************
+132-05-2026 23:33:59 [main] [32m INFO[m APITestListener::onTestStart():16 - ========== Starting the test countAPITest_MissingAuthToken ========
+132-05-2026 23:33:59 [main] [32m INFO[m APITestListener::onTestStart():17 - ========== Test Class [TestClass name=class com.api.tests.CountApiTest] ========
+132-05-2026 23:33:60 [main] [32m INFO[m APITestListener::onTestStart():18 - ========== Description Verify of the Count API is giving correct ststus code for the invalid token ========
+132-05-2026 23:33:60 [main] [32m INFO[m APITestListener::onTestStart():19 - ========== Groups [negative, regression, smoke, api] ========
+132-05-2026 23:33:60 [main] [32m INFO[m APITestListener::onTestStart():20 - ****************************************************************
+132-05-2026 23:34:00 [main] [32m INFO[m APITestListener::onTestSuccess():28 - Total Duration:404 ms 
+132-05-2026 23:34:01 [main] [32m INFO[m APITestListener::onTestSuccess():29 - countAPITest_MissingAuthToken- Test Passed!!!
+132-05-2026 23:34:03 [main] [32m INFO[m APITestListener::onTestStart():15 - ****************************************************************
+132-05-2026 23:34:03 [main] [32m INFO[m APITestListener::onTestStart():16 - ========== Starting the test verifyCountAPIResponse ========
+132-05-2026 23:34:03 [main] [32m INFO[m APITestListener::onTestStart():17 - ========== Test Class [TestClass name=class com.api.tests.CountApiTest] ========
+132-05-2026 23:34:03 [main] [32m INFO[m APITestListener::onTestStart():18 - ========== Description Verify of the Count API is shown correctly ========
+132-05-2026 23:34:03 [main] [32m INFO[m APITestListener::onTestStart():19 - ========== Groups [regression, smoke, api] ========
+132-05-2026 23:34:03 [main] [32m INFO[m APITestListener::onTestStart():20 - ****************************************************************
+132-05-2026 23:34:52 [main] [32m INFO[m APITestListener::onTestSuccess():28 - Total Duration:491 ms 
+132-05-2026 23:34:52 [main] [32m INFO[m APITestListener::onTestSuccess():29 - verifyCountAPIResponse- Test Passed!!!
+132-05-2026 23:34:53 [main] [32m INFO[m APITestListener::onTestStart():15 - ****************************************************************
+132-05-2026 23:34:53 [main] [32m INFO[m APITestListener::onTestStart():16 - ========== Starting the test invalidMasterAPITest ========
+132-05-2026 23:34:53 [main] [32m INFO[m APITestListener::onTestStart():17 - ========== Test Class [TestClass name=class com.api.tests.MasterAPITest] ========
+132-05-2026 23:34:53 [main] [32m INFO[m APITestListener::onTestStart():18 - ========== Description Verify of the Master API is giving correct ststus code for the invalid token ========
+132-05-2026 23:34:53 [main] [32m INFO[m APITestListener::onTestStart():19 - ========== Groups [negative, regression, smoke, api] ========
+132-05-2026 23:34:53 [main] [32m INFO[m APITestListener::onTestStart():20 - ****************************************************************
+132-05-2026 23:34:69 [main] [32m INFO[m APITestListener::onTestSuccess():28 - Total Duration:160 ms 
+132-05-2026 23:34:69 [main] [32m INFO[m APITestListener::onTestSuccess():29 - invalidMasterAPITest- Test Passed!!!
+132-05-2026 23:34:70 [main] [32m INFO[m APITestListener::onTestStart():15 - ****************************************************************
+132-05-2026 23:34:70 [main] [32m INFO[m APITestListener::onTestStart():16 - ========== Starting the test masterAPITest ========
+132-05-2026 23:34:70 [main] [32m INFO[m APITestListener::onTestStart():17 - ========== Test Class [TestClass name=class com.api.tests.MasterAPITest] ========
+132-05-2026 23:34:70 [main] [32m INFO[m APITestListener::onTestStart():18 - ========== Description Verify of the Master API is shown correctly ========
+132-05-2026 23:34:70 [main] [32m INFO[m APITestListener::onTestStart():19 - ========== Groups [regression, smoke, api] ========
+132-05-2026 23:34:70 [main] [32m INFO[m APITestListener::onTestStart():20 - ****************************************************************
+132-05-2026 23:34:25 [main] [32m INFO[m APITestListener::onTestSuccess():28 - Total Duration:547 ms 
+132-05-2026 23:34:26 [main] [32m INFO[m APITestListener::onTestSuccess():29 - masterAPITest- Test Passed!!!
+132-05-2026 23:34:29 [main] [32m INFO[m APITestListener::onTestStart():15 - ****************************************************************
+132-05-2026 23:34:29 [main] [32m INFO[m APITestListener::onTestStart():16 - ========== Starting the test createJobAPITest ========
+132-05-2026 23:34:29 [main] [32m INFO[m APITestListener::onTestStart():17 - ========== Test Class [TestClass name=class com.api.tests.CreateJobAPITest] ========
+132-05-2026 23:34:29 [main] [32m INFO[m APITestListener::onTestStart():18 - ========== Description Verify if the crrate job API is able to create the Inwarranty job ========
+132-05-2026 23:34:29 [main] [32m INFO[m APITestListener::onTestStart():19 - ========== Groups [regression, smoke, api] ========
+132-05-2026 23:34:29 [main] [32m INFO[m APITestListener::onTestStart():20 - ****************************************************************
+132-05-2026 23:34:63 [main] [1;31mERROR[m APITestListener::onTestFailure():33 - createJobAPITest- Test FAILED!!!
+132-05-2026 23:34:63 [main] [1;31mERROR[m APITestListener::onTestFailure():34 - Error Messsage
+132-05-2026 23:34:64 [main] [1;31mERROR[m APITestListener::onTestFailure():35 - java.lang.AssertionError: 1 expectation failed.
+Expected status code <200> but was <500>.
+
+132-05-2026 23:34:73 [main] [32m INFO[m APITestListener::onFinish():50 - ************* FINISH  ****************
