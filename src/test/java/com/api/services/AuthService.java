@@ -11,9 +11,9 @@ public class AuthService {
 
 	//Service Class !! It is going to hold the API's that belongs to the Auth
 	
-	private static final String LOGIN_ENDPOINT="login";
+	private static final String LOGIN_ENDPOINT="/login";
 	
-	public Response login(UserCredentials userCredentials) {
+	public Response login(Object userCredentials) {
 		Response response=given()
 		.spec(requestSpec(userCredentials))
 		.when()
