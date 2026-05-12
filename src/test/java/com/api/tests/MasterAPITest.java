@@ -1,28 +1,31 @@
 package com.api.tests;
 
 import static com.api.constant.Role.FD;
-import static io.restassured.RestAssured.given;
+import static com.api.utils.SpecUtil.responseSpec_OK;
+import static com.api.utils.SpecUtil.responseSpec_TEXT;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.Matchers.notNullValue;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.api.utils.SpecUtil.*;
-
-import static io.restassured.module.jsv.JsonSchemaValidator.*;
+import com.api.services.MasterService;
 
 public class MasterAPITest {
+	
+	private MasterService masterService;
 
-	@Test(description="Verify of the Master API is shown correctly", groups= {"smoke","api","regression"})
-	public static void masterAPITest() {
-		
-		given()
-		.spec(requestSpecWithAuth(FD))
-		.when()
-		.post("/master")
+	@BeforeMethod(description = "Instantiating the Master Service Object")
+	public void setup() {
+		masterService = new MasterService();
+	}
+	@Test(description= "Verify of the Master API is shown correctly", groups= {"smoke","api","regression"})
+	public void masterAPITest() {
+		masterService.master(FD)
 		.then()
 		.spec(responseSpec_OK())
 		.body("data",notNullValue())
@@ -42,10 +45,7 @@ public class MasterAPITest {
 	
 	@Test(description="Verify of the Master API is giving correct ststus code for the invalid token", groups= {"smoke","api","negative","regression"})
 	public void invalidMasterAPITest() {
-		given()
-		.spec(requestSpec())
-		.when()
-		.post("/master")
+		masterService.masterWithoutAuth()
 		.then()
 		.spec(responseSpec_TEXT(401));
 	}
