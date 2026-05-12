@@ -27,6 +27,7 @@ import com.api.request.model.Customer;
 import com.api.request.model.CustomerAdress;
 import com.api.request.model.CustomerProduct;
 import com.api.request.model.Problems;
+import com.api.services.JobService;
 import com.database.dao.CustomerAddressDao;
 import com.database.dao.CustomerDao;
 import com.database.dao.CustomerProductDao;
@@ -41,7 +42,7 @@ import com.database.model.MapJobProblemModel;
 import io.restassured.response.Response;
 
 public class CreateJobAPIWithDBValidationTest {
-	
+	JobService jobService;
 CreateJobPayload createJobPayload;
 Customer customer;
 CustomerAdress customerAdrss;
@@ -51,6 +52,7 @@ Problems problem;
 	@BeforeMethod(description="Creating payload for crerate job API test")
 	public void setup()
 	{
+		jobService= new JobService();
 		customer = new Customer("Rahul", "Prajapati", "807632944", "", "rahulp@123", "");
 		customerAdrss = new CustomerAdress("c304", "RG Luxury", "MG Road", "Bangur Nagar", "Greater Noida Extension", "211138", "India", "Uttar Pradesh");
 		customerProduct = new CustomerProduct(getTimeWithDaysAgo(10), "11260227759411", "11260227759411", "11260227759411", getTimeWithDaysAgo(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_Blue.getCode());
@@ -65,10 +67,7 @@ Problems problem;
 		// Creating the CreateJobPayload object
 		
 		
-		Response response = given()
-				.spec(requestSpecWithAuth(Role.FD, createJobPayload))
-				.when()
-				.post("/job/create")
+		Response response = jobService.createJob(Role.FD, createJobPayload)
 				.then()
 				.spec(responseSpec_OK())
 				.body(matchesJsonSchemaInClasspath("response-schema/CreateJobAPIResponseSchema.json"))

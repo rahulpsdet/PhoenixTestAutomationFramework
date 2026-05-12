@@ -1,17 +1,23 @@
 package com.api.tests.datadriven;
 
-import static com.api.utils.SpecUtil.requestSpecWithAuth;
 import static com.api.utils.SpecUtil.responseSpec_OK;
-import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 import org.hamcrest.Matchers;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.api.constant.Role;
 import com.api.request.model.CreateJobPayload;
+import com.api.services.JobService;
 
 public class CreateJobAPIDBDataDrivenTest {
+	JobService jobService;
+	
+	@BeforeMethod(description="Initializing the Job Service")
+	public void setup() {
+		jobService= new JobService();
+	}
 		
 	@Test(description="Verify if the crrate job API is able to create the Inwarranty job", groups= {"datadriven","api","regression","csv"}
 	,dataProviderClass=com.dataproviders.DataProviderUtils.class
@@ -20,10 +26,7 @@ public class CreateJobAPIDBDataDrivenTest {
 		// Creating the CreateJobPayload object
 		
 		
-		 given()
-		 .spec(requestSpecWithAuth(Role.FD, createJobPayload))
-		 .when()
-		 .post("/job/create")
+		jobService.createJob(Role.FD, createJobPayload)
 		 .then()
 		 .spec(responseSpec_OK())
 		 .body(matchesJsonSchemaInClasspath("response-schema/CreateJobAPIresponseSchema.json"))

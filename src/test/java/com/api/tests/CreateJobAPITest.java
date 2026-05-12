@@ -1,7 +1,8 @@
 package com.api.tests;
 
 import static com.api.utils.DateTimeUtil.getTimeWithDaysAgo;
-import static io.restassured.RestAssured.given;
+import static com.api.utils.SpecUtil.responseSpec_OK;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,19 +24,18 @@ import com.api.request.model.Customer;
 import com.api.request.model.CustomerAdress;
 import com.api.request.model.CustomerProduct;
 import com.api.request.model.Problems;
-import static com.api.utils.SpecUtil.*;
-
-import static io.restassured.module.jsv.JsonSchemaValidator.*;
+import com.api.services.JobService;
 
 public class CreateJobAPITest {
 	CreateJobPayload createJobPayload;
-	
+	JobService jobService;
 	@BeforeMethod(description="Creating payload for crerate job API test")
 	public void setup()
 	{
+		jobService= new JobService();
 		Customer customer = new Customer("Rahul", "Prajapati", "807632944", "", "rahulp@123", "");
 		CustomerAdress customerAdrss = new CustomerAdress("c304", "RG Luxury", "MG Road", "Bangur Nagar", "Greater Noida Extension", "211138", "India", "Uttar Pradesh");
-		CustomerProduct customerProduct = new CustomerProduct(getTimeWithDaysAgo(10), "34260227759400", "34260227759400", "34260227759400", getTimeWithDaysAgo(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_Blue.getCode());
+		CustomerProduct customerProduct = new CustomerProduct(getTimeWithDaysAgo(10), "34260227759411", "34260227759411", "34260227759411", getTimeWithDaysAgo(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_Blue.getCode());
 		Problems problem = new Problems(Problem.SMARTPHONE_IS_RUNNING_SLOW.getCode(), "Battery Issue");
 		List<Problems> problemList= new ArrayList<Problems>();
 		problemList.add(problem);
@@ -47,10 +47,7 @@ public class CreateJobAPITest {
 		// Creating the CreateJobPayload object
 		
 		
-		 given()
-		 .spec(requestSpecWithAuth(Role.FD, createJobPayload))
-		 .when()
-		 .post("/job/create")
+		jobService.createJob(Role.FD, createJobPayload)
 		 .then()
 		 .spec(responseSpec_OK())
 		 .body(matchesJsonSchemaInClasspath("response-schema/CreateJobAPIresponseSchema.json"))
